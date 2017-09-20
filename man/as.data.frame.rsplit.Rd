@@ -23,6 +23,12 @@ assessment(x, ..., recipe = has_recipe(x))
 \item{data}{Either "analysis" or "assessment" to specify which data are returned.}
 
 \item{...}{Additional arguments to be passed to or from methods. Not currently used.}
+
+\item{recipe}{A logical to indicate whether the data
+should be processed using a recipe (assuming one has been
+added (using \code{add_recipe}) and the results of that
+processing should be returned. If \code{FALSE}, the original
+data format is returned.}
 }
 \description{
 The analysis or assessment code can be returned as a data

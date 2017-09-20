@@ -91,6 +91,11 @@ as.data.frame.rsplit <-
 
 #' @rdname as.data.frame.rsplit
 #' @importFrom recipes juice bake
+#' @param recipe A logical to indicate whether the data
+#'   should be processed using a recipe (assuming one has been
+#'   added (using \code{add_recipe}) and the results of that
+#'   processing should be returned. If \code{FALSE}, the original
+#'   data format is returned.
 #' @export
 analysis <- function (x, ..., recipe = has_recipe(x)) {
   out <- as.data.frame(x, data = "analysis")
