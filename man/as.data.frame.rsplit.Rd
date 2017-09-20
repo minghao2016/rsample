@@ -9,9 +9,9 @@
 \method{as.data.frame}{rsplit}(x, row.names = NULL, optional = FALSE,
   data = "analysis", ...)
 
-analysis(x, ...)
+analysis(x, ..., recipe = has_recipe(x))
 
-assessment(x, ...)
+assessment(x, ..., recipe = has_recipe(x))
 }
 \arguments{
 \item{x}{An \code{rsplit} object.}
@@ -27,6 +27,6 @@ assessment(x, ...)
 \description{
 The analysis or assessment code can be returned as a data
   frame (as dictated by the \code{data} argument) using
-  \code{as.data.frame.rsplit}. \code{analysis} and 
+  \code{as.data.frame.rsplit}. \code{analysis} and
   \code{assessment} are shortcuts.
 }
