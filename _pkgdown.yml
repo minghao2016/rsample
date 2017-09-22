@@ -21,6 +21,7 @@ reference:
       - complement
       - fill
       - form_pred
+      - add_recipe
   - title: Data
     contents:
       - attrition    
@@ -30,7 +31,9 @@ navbar:
   - text: Basic Usage 
     href: articles/Basics.html   
   - text: Working with Resample Sets
-    href: articles/Working_with_rsets.html     
+    href: articles/Working_with_rsets.html    
+  - text: Using Recipes
+    href: articles/Recipes_with_rsample.html      
   - text: Reference
     href: reference/index.html
 

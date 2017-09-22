@@ -49,3 +49,11 @@ prep_recipe <- function(x, ...) {
 has_recipe <- function(x) {
   length(x$recipe) > 1 || !is.na(x$recipe)
 }
+
+#' @keywords internal
+#' @rdname recipes
+#' @export
+prepper <- function(split_obj, recipe, ...) {
+  prep(recipe, training = analysis(split_obj, recipe = FALSE), ...)
+}
+# chef? dr_prepper?
