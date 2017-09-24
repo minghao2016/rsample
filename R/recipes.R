@@ -11,6 +11,8 @@
 #'   pre-prepared).
 #' @param prep A logical; should the recipe be \code{prep}ed on
 #'  each of the analysis sets?
+#' @param split_obj An \code{rset} object as found in the
+#'  \code{splits} element of \code{rsample} objects. 
 #' @param ... Options to pass to \code{prep.recipe} such as
 #'  \code{verbose} or \code{retain}.
 #' @return \code{add_recipe} returns the same \code{rset} object
@@ -43,14 +45,12 @@ prep_recipe <- function(x, ...) {
   x
 }
 
-#' @keywords internal
 #' @rdname recipes
 #' @export
 has_recipe <- function(x) {
   length(x$recipe) > 1 || !is.na(x$recipe)
 }
 
-#' @keywords internal
 #' @rdname recipes
 #' @export
 prepper <- function(split_obj, recipe, ...) {

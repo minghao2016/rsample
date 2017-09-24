@@ -25,6 +25,9 @@ each of the analysis sets?}
 
 \item{...}{Options to pass to \code{prep.recipe} such as
 \code{verbose} or \code{retain}.}
+
+\item{split_obj}{An \code{rset} object as found in the
+\code{splits} element of \code{rsample} objects.}
 }
 \value{
 \code{add_recipe} returns the same \code{rset} object
@@ -35,4 +38,3 @@ each of the analysis sets?}
 \code{add_recipe} will add a pre-defined recipe to each
   \code{rsplit} element of the \code{rset} object.
 }
-\keyword{internal}
