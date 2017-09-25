@@ -8,6 +8,10 @@ output:
     toc: yes
 ---
 
+```{r setup, include = FALSE}
+options(digits = 3)
+```
+
 The [`recipes`](https://topepo.github.io/recipes/) package contains a data preprocessor that can be used to avoid the potentially expensive formula methods as well as providing a richer set of data manipulation tools than base R can provide. 
 
 In many cases, the preprocessing steps might contain quantities that require statistical estimation of parameters, such as
@@ -176,6 +180,13 @@ rmse <- function(dat)
   sqrt(mean((dat$Sale_Price - dat$predicted)^2))
 bt_embed$RMSE <- map_dbl(bt_embed$pred, rmse)
 summary(bt_embed$RMSE)
+```
+
+Finally, you can eliminate the recipe too:
+
+```{r embed-me-note}
+bt_removed <- bt_embed %>% remove_recipe()
+bt_removed$splits[[1]]
 ```
 
 

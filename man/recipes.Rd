@@ -3,11 +3,14 @@
 \name{recipes}
 \alias{recipes}
 \alias{add_recipe}
+\alias{remove_recipe}
 \alias{has_recipe}
 \alias{prepper}
 \title{Add a Recipe to Each Split Object}
 \usage{
-add_recipe(rset_obj, recipe, prep = TRUE, ...)
+add_recipe(rset_obj, recipe = NA, prep = TRUE, ...)
+
+remove_recipe(rset_obj)
 
 has_recipe(x)
 

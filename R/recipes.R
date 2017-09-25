@@ -20,7 +20,7 @@
 #'  \code{has_recipe} returns a logical.
 #' @importFrom purrr map
 #' @export
-add_recipe <- function(rset_obj, recipe, prep = TRUE, ...) {
+add_recipe <- function(rset_obj, recipe = NA, prep = TRUE, ...) {
   rset_obj$splits <- purrr::map(rset_obj$splits,
                                 function(x, rec) {
                                   x$recipe <- rec
@@ -34,6 +34,21 @@ add_recipe <- function(rset_obj, recipe, prep = TRUE, ...) {
   }
   rset_obj
 }
+
+#' @rdname recipes
+#' @importFrom purrr map
+#' @export
+remove_recipe <- function(rset_obj) {
+  rset_obj$splits <- purrr::map(rset_obj$splits,
+                                function(x, rec) {
+                                  x$recipe <- NA
+                                  x
+                                },
+                                rec = recipe)
+  rset_obj
+}
+
+
 
 #' @importFrom recipes prep
 prep_recipe <- function(x, ...) {
