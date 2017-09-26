@@ -43,8 +43,7 @@ remove_recipe <- function(rset_obj) {
                                 function(x, rec) {
                                   x$recipe <- NA
                                   x
-                                },
-                                rec = recipe)
+                                })
   rset_obj
 }
 
