@@ -7,3 +7,5 @@ README.html
 ^docs$
 ^_pkgdown\.yml$
 vignettes/.build.timestamp
+rsample_hex_thumb.png
+rsample_hex.png
