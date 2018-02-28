@@ -20,6 +20,7 @@ library(sweep)
 library(dplyr)
 library(ggplot2)
 library(zoo)
+library(yardstick)
 ```
 
 "[Demo Week: Tidy Forecasting with `sweep`](http://www.business-science.io/code-tools/2017/10/25/demo_week_sweep.html)" is an excellent article that uses tidy methods with time series. This article uses their analysis with `rsample` to get performance estimates for future observations using [rolling forecast origin resampling](https://robjhyndman.com/hyndsight/crossvalidation/). 
@@ -126,16 +127,14 @@ For the extrapolation error, the model and split objects are required. Using the
 
 ```{r extrap}
 library(dplyr)
+library(yardstick)
 
 get_extrap <- function(split, mod) {
   n <- nrow(assessment(split))
-  # Get assessment data
+  # Get assessment data, extract the predictions, compute performance
   pred_dat <- assessment(split) %>%
-    mutate(
-      pred = as.vector(forecast(mod, h = n)$mean),
-      pct_error = ( S4248SM144NCEN - pred ) / S4248SM144NCEN * 100
-    )
-  mean(abs(pred_dat$pct_error))
+    mutate(pred = as.vector(forecast(mod, h = n)$mean)) %>% 
+    mape(S4248SM144NCEN, pred)
 }
 
 roll_rs$extrapolation <- 

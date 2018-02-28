@@ -13,6 +13,7 @@ reference:
       - group_vfold_cv
       - rolling_origin
       - nested_cv
+      - permute
       - apparent
   - title: Utilities
     contents:
