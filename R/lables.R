@@ -40,8 +40,8 @@ labels.vfold_cv <- function(object, make_factor = FALSE, ...) {
 
 #' Find Labels from rsplit Object
 #'
-#' Produce a tibble of identification variables so that single 
-#'  splits can be linked to a particular resample. 
+#' Produce a tibble of identification variables so that single
+#'  splits can be linked to a particular resample.
 #'
 #' @param object An `rsplit` object
 #' @param ... Not currently used.
@@ -184,3 +184,17 @@ pretty.group_vfold_cv  <- function(x, ...) {
   paste0("Group ", details$v, "-fold cross-validation")
 }
 
+
+#' @exportMethod pretty.permutation
+#' @export pretty.permutation
+#' @export
+#' @method pretty permutation
+#' @rdname pretty.vfold_cv
+pretty.permutation  <- function(x, ...) {
+  details <- attributes(x)
+  paste0(
+    details$times,
+    " permutations of ",
+    paste0(details$vars, collapse = ", ")
+  )
+}

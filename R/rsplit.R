@@ -73,7 +73,16 @@ as.integer.rsplit <-
 #'
 #' model_data_1 <- folds$splits[[1]] %>% analysis()
 #' holdout_data_1 <- folds$splits[[1]] %>% assessment()
+#'
+#' set.seed(208)
+#' perms <- permute(mtcars, mpg)
+#'
+#' mtcars %>% head()
+#' perms$splits[[1]] %>% analysis() %>% head()
+#' # doesn't exist so no rows are returned
+#' perms$splits[[1]] %>% assessment() %>% head()
 #' @export
+#' @importFrom purrr map_dfc
 as.data.frame.rsplit <-
   function(x,
            row.names = NULL,
@@ -81,16 +90,29 @@ as.data.frame.rsplit <-
            data = "analysis",
            ...) {
 
-  if (!is.null(row.names))
-    warning( "`row.names` is kept for consistency with the ",
-             "underlying class but non-NULL values will be ",
-             "ignored.", call. = FALSE)
-  if (optional)
-    warning( "`optional` is kept for consistency with the ",
-             "underlying class but TRUE values will be ",
-             "ignored.", call. = FALSE)
-  x$data[as.integer(x, data = data, ...), , drop = FALSE]
-}
+    if (!is.null(row.names))
+      warning( "`row.names` is kept for consistency with the ",
+               "underlying class but non-NULL values will be ",
+               "ignored.", call. = FALSE)
+    if (optional)
+      warning( "`optional` is kept for consistency with the ",
+               "underlying class but TRUE values will be ",
+               "ignored.", call. = FALSE)
+    if (inherits(x, "permutation_split")) {
+      if (data == "analysis") {
+        perm_vars <- attr(x, "perm_var")
+        dat <- x$data
+        dat[, perm_vars] <-
+          map_dfc(perm_vars, perm_col, dat, as.integer(x, data = data, ...))
+      } else {
+        dat <- x$data[integer(0),, drop = FALSE]
+      }
+    } else {
+      dat <- x$data[as.integer(x, data = data, ...), , drop = FALSE]
+    }
+    dat
+  }
+
 
 #' @rdname as.data.frame.rsplit
 #' @export

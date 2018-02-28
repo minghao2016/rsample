@@ -9,6 +9,7 @@
 \alias{pretty.nested_cv}
 \alias{pretty.bootstraps}
 \alias{pretty.group_vfold_cv}
+\alias{pretty.permutation}
 \title{Short Decriptions of rsets}
 \usage{
 \method{pretty}{vfold_cv}(x, ...)
@@ -26,9 +27,11 @@
 \method{pretty}{bootstraps}(x, ...)
 
 \method{pretty}{group_vfold_cv}(x, ...)
+
+\method{pretty}{permutation}(x, ...)
 }
 \arguments{
-\item{x}{An `rset` object}
+\item{x}{An \code{rset} object}
 
 \item{...}{Not currently used.}
 }
