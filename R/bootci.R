@@ -237,7 +237,7 @@ pctl_single <- function(stats, alpha = 0.05) {
 #' @export
 int_pctl <- function(.data, statistics, alpha = 0.05) {
 
-  check_rset(.data)
+  check_rset(.data, app = FALSE)
 
   .data <- .data %>% dplyr::filter(id != "Apparent")
 
