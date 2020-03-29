@@ -44,11 +44,6 @@ reference:
       - rsample2caret
       - starts_with("labels")
       - add_resample_id
-  - title: Data
-    contents:
-      - attrition
-      - drinks
-      - two_class_dat
 
 navbar:
   left:

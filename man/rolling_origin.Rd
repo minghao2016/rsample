@@ -58,7 +58,7 @@ dim(rolling_origin(ex_data, skip = 2, cumulative = FALSE))
 # which is especially useful for irregular series where a fixed window
 # is not useful. This example slides over 5 years at a time.
 library(dplyr)
-data(drinks)
+data(drinks, package = "modeldata")
 
 drinks_annual <- drinks \%>\%
   mutate(year = as.POSIXlt(date)$year + 1900) \%>\%

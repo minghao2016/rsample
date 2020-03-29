@@ -48,6 +48,7 @@ data points in the training data is equivalent to the proportions in the
 original data set.
 }
 \examples{
+data(drinks, package = "modeldata")
 set.seed(1353)
 car_split <- initial_split(mtcars)
 train_data <- training(car_split)

@@ -27,7 +27,7 @@ The data are sales of alcoholic beverages originally from [the Federal Reserve B
 
 ```{r read-data}
 library(tidymodels)
-data("drinks")
+data("drinks", package = "modeldata")
 str(drinks, give.att = FALSE)
 ```
 
